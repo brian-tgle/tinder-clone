@@ -1,0 +1,48 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"settings": {
+		"react": {
+			"version": "latest"
+		}
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"google"
+	],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": 12,
+		"sourceType": "module"
+	},
+	"plugins": [
+		"react",
+		"@typescript-eslint"
+	],
+	"rules": {
+		"react/jsx-uses-react": "off",
+		"react/react-in-jsx-scope": "off",
+		"object-curly-spacing": [
+			"error",
+			"always",
+			{
+				"objectsInObjects": false
+			}
+		],
+		"require-jsdoc": "off",
+		"indent": [
+			"error",
+			2
+		],
+		"comma-dangle": [
+			"error",
+			"never"
+		]
+	}
+}
