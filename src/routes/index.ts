@@ -1,0 +1,17 @@
+import { lazy } from 'react';
+
+const routeList = [
+  {
+    path: '/',
+    component: lazy(() => import('../pages/home')),
+    exact: true
+  },
+  {
+    path: '/profile/:userId',
+    component: lazy(() => import('../pages/profile')),
+    exact: false
+  }
+];
+
+export default routeList;
+
