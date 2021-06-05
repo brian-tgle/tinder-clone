@@ -1,7 +1,36 @@
+@import '_color';
+
+button {
+  cursor: pointer;
+  &.no-border {
+    border: none;
+    outline: none;
+  }
+  &.no-bg {
+    background: none;
+  }
+}
+
 .text-center {
   text-align: center;
 }
 
 .clickable {
   cursor: pointer;
+}
+
+.with-shadow {
+  -webkit-box-shadow: 5px 5px 20px 0px rgba(54,47,54,1);
+  -moz-box-shadow: 5px 5px 20px 0px rgba(54,47,54,1);
+  box-shadow: 5px 5px 20px 0px rgba(54,47,54,1);
+}
+
+.with-border-radius {
+  border-radius: .5rem;
+}
+
+.page-title {
+  background: $gradient;
+  color: $white;
+  padding: .5rem;
 }
