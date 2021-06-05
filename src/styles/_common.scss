@@ -2,10 +2,12 @@
 
 button {
   cursor: pointer;
+
   &.no-border {
     border: none;
     outline: none;
   }
+
   &.no-bg {
     background: none;
   }
@@ -20,17 +22,17 @@ button {
 }
 
 .with-shadow {
-  -webkit-box-shadow: 5px 5px 20px 0px rgba(54,47,54,1);
-  -moz-box-shadow: 5px 5px 20px 0px rgba(54,47,54,1);
-  box-shadow: 5px 5px 20px 0px rgba(54,47,54,1);
+  -webkit-box-shadow: 5px 5px 20px 0 rgba(54, 47, 54, 1);
+  -moz-box-shadow: 5px 5px 20px 0 rgba(54, 47, 54, 1);
+  box-shadow: 5px 5px 20px 0 rgba(54, 47, 54, 1);
 }
 
 .with-border-radius {
-  border-radius: .5rem;
+  border-radius: 0.5rem;
 }
 
 .page-title {
   background: $gradient;
   color: $white;
-  padding: .5rem;
+  padding: 0.5rem;
 }

@@ -26,7 +26,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "tsc --pretty && eslint . --ext ts --ext tsx --ext js",
-    "typecheck": "tsc --project tsconfig.json --noEmit --skipLibCheck"
+    "typecheck": "tsc --project tsconfig.json --noEmit --skipLibCheck",
+    "stylelint:fix": "stylelint --config=.stylelintrc \"./src/**/*.scss\" --fix",
+    "lint:fix": "npm run lint -- --fix"
   },
   "eslintConfig": {
     "extends": [
