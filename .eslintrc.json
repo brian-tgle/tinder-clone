@@ -44,6 +44,7 @@
 			"error",
 			"never"
 		],
-		"max-len": ["error", { "code": 120, "ignoreComments": true }]
+		"max-len": ["error", { "code": 120, "ignoreComments": true }],
+		"react/prop-types": "off"
 	}
 }
