@@ -32,10 +32,16 @@ exports.findAll = async (req, res) => {
   var condition = userId
     ? { _id : { $nin : histories } }
     : {};
-
+  const select = {
+    email: 1,
+    firstName: 1,
+    id: 1,
+    lastName: 1,
+    picture: 1,
+    title: 1
+  }
   const { limit, offset } = getPagination(page, size);
-
-  User.paginate(condition, { offset, limit })
+  User.paginate(condition, { offset, limit, select })
     .then((data) => {
       res.send({
         totalItems: data.totalDocs,
