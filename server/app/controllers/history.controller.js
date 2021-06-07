@@ -11,7 +11,7 @@ const getPagination = (page, size) => {
 // Create and Save a new History
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.userId || !req.body.userInteractedId) {
+  if (!req.body.userId || !req.body.interactedUserId) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
@@ -19,8 +19,8 @@ exports.create = (req, res) => {
   // Create a History
   const history = new History({
     userId: req.body.userId,
-    userInteractedId: req.body.userInteractedId,
-    liked: req.body.liked
+    interactedUserId: req.body.interactedUserId,
+    reaction: req.body.reaction
   });
 
   // Save User in the database

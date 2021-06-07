@@ -1,30 +1,54 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
+import useApplicationStore from 'store/application';
 import SlideShow from './slideShow';
-import PassAction from './actions/pass';
-import InfoAction from './actions/info';
-import LikeAction from './actions/like';
+import Action from './actions';
+import { ReactComponent as PassButton } from 'assets/images/pass.svg';
+import { ReactComponent as LikeButton } from 'assets/images/like.svg';
+import { ReactComponent as InfoButton } from 'assets/images/info.svg';
+import { UserReaction } from 'interface/user';
+import UserRepository from 'services/userRepository';
+import { REACTION_TYPES, TEMP_USER_ID } from 'constant';
 import './profileCard.scss';
 
 interface ProfileCardProps {
-  email: string;
-  firstName: string;
-  id: string;
-  lastName: string;
-  picture: string;
-  title: string;
+  userId: string;
+  index: number;
 }
-const ProfileCard: FC<ProfileCardProps> = ({ picture, firstName, lastName, title }) => {
+const ProfileCard: FC<ProfileCardProps> = ({ userId, index }) => {
+  const { PASS, LIKE } = REACTION_TYPES;
+  const [reaction, setReaction] = useState<string>('');
+  const [applicationState, applicationActions] = useApplicationStore();
+
+  const handleReaction = (reaction: string) => {
+    setReaction(reaction);
+    const payload: UserReaction = {
+      userId: TEMP_USER_ID,
+      interactedUserId: userId,
+      reaction
+    };
+    UserRepository.reaction(payload).then(() => {
+      applicationActions.onChangeItemIndex(applicationState.currentItemIndex + 1);
+    }).catch(() => {});
+  };
+
   return (
-    <div>
-      <SlideShow
-        images={['https://i.pinimg.com/originals/0b/3a/56/0b3a56ce1b5f0433f15a11115182b900.jpg']}
-        userFullname={`${firstName} ${lastName}`} age={22} title={title} />
-      <div className="actions">
-        <PassAction />
-        <InfoAction />
-        <LikeAction />
-      </div>
-    </div>
+    <>
+      {index === 0 ? <div>
+        <SlideShow userId={userId} reaction={reaction} />
+        <div className="actions">
+          <Action handleClick={() => handleReaction(PASS)}>
+            <PassButton />
+          </Action>
+          {/* TODO: Out of scope, implement later. */}
+          <Action handleClick={() => {}}>
+            <InfoButton />
+          </Action>
+          <Action handleClick={() => handleReaction(LIKE)}>
+            <LikeButton />
+          </Action>
+        </div>
+      </div> : <></>}
+    </>
   );
 };
 

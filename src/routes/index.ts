@@ -7,7 +7,7 @@ const routeList = [
     exact: true
   },
   {
-    path: '/profile/:userId',
+    path: '/profile',
     component: lazy(() => import('../pages/profile')),
     exact: false
   }

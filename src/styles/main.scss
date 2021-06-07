@@ -10,3 +10,17 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.profile {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  .username {
+    position: relative;
+    bottom: 1rem;
+    right: .5rem
+  }
+  .avatar {
+    border-radius: 50%;
+  }
+}

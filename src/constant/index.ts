@@ -1,13 +1,13 @@
 export const DEFAULT_API_PARAMS = {
-  LIMIT: 20,
-  PAGE: 1
+  LIMIT: 5,
+  PAGE: 1,
+  NEED_TO_FETCH_MORE: 2,
+  DEFAULT_INDEX: 0
 };
 
-export const ALERT_TYPES = {
-  SUCCESS: 'success',
-  ERROR: 'error',
-  INFO: 'info',
-  WARNING: 'warning'
+export const REACTION_TYPES = {
+  PASS: 'pass',
+  LIKE: 'like'
 };
 
-export const ALERT_TIME = 3; // Seconds
+export const TEMP_USER_ID = '30bg8fc333b4cf332574679a';
