@@ -1,43 +1,71 @@
 # Simple Tinder web app
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![Screenshot](https://user-images.githubusercontent.com/84697800/120880548-9c027c00-c5f5-11eb-9dc7-a303579c501f.png)
 
 ## Feature
+- Like
+- Pass
+- View history
 
+## Built with:
+
+- 💡 **TypeScript**: A language for application-scale JavaScript
+- 💎 **Hooks**: Use react hooks API instead of traditional class API
+- 🚀 **State of The Art Development**: Newest development stack of React/Hooks/React Sweet State/Typescript
+- **react-sweet-state** for state management
+- **husky/lint-staged** for checking before commiting and pushing (check it out in ```husky``` and ```lint-staged``` section in ```package.json```)
+- **stylelint** for checking style convention
+- **jest** framework and runner, **react-test-renderer**, **enzyme** are test utilities
+- **localForage** for improving the offline experience by using asynchronous storage
+
+## 📦 Install
+
+```bash
+$ git clone https://github.com/brian-tgle/tinder-clone.git
+$ cd tinder-clone
+```
+### Start server
+```bash
+$ cd server
+$ npm install
+$ node server
+```
+Server live on: http://localhost:4000/
+Exposed API:
+```bash
+GET: /user                  Get users list
+```
+```bash
+GET: /user/{userId}         Get Full profile
+```
+```bash
+POST: /user/like            Mark a user as liked
+```
+```bash
+POST: /user/pass            Mark a user as not liked
+```
+```bash
+POST: /history              Get the list of people have liked or passed so far 
+```
+### Start client
+```bash
+$ npm install
+$ npm start
+```
+Client live on: http://localhost:3000/
+
+## 🔨 Build
+
+```bash
+npm install
+npm run build
+```
+
+## 🖥 Browsers support
+
+Modern browsers and Internet Explorer 10+.
+
+## IDE Settings
+Current setting available: auto fixing and linting code on save.
+Check it out in ```.vscode/settings.json```.

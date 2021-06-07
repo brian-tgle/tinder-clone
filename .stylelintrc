@@ -13,6 +13,7 @@
         "ignoreFontFamilies": ["fontello"]
     }],
     "selector-type-case": "lower",
-    "selector-pseudo-element-colon-notation": "double"
+    "selector-pseudo-element-colon-notation": "double",
+    "no-missing-end-of-source-newline": true
   }
 }

@@ -1,5 +1,6 @@
 !**/.eslintrc*
 node_modules*
+server
 dist
 *.svg
 *.ico
