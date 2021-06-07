@@ -4,6 +4,9 @@ module.exports = app => {
 
   var router = require("express").Router();
 
+  // Import User data
+  router.get("/import", users.import);
+
   // Retrieve all Users
   router.get("/", users.findAll);
 

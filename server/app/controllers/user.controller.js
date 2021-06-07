@@ -1,4 +1,5 @@
 const db = require("../models");
+const userSeeder = require('../data/seeder.json');
 const User = db.users;
 const History = db.histories;
 
@@ -9,30 +10,10 @@ const getPagination = (page, size) => {
   return { limit, offset };
 };
 
-// Create and Save a new User
-exports.create = (req, res) => {
-  // Validate request
-  if (!req.body.title) {
-    res.status(400).send({ message: "Content can not be empty!" });
-    return;
-  }
-
-  // Create a User
-  const user = new User({
-    title: req.body.title,
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    gender: req.body.gender,
-    email: req.body.email,
-    dateOfBirth: req.body.dateOfBirth,
-    registerDate: req.body.registerDate,
-    phone: req.body.phone,
-    picture: req.body.picture
-  });
-
-  // Save User in the database
-  user
-    .save(user)
+// Import user data
+exports.import = (req, res) => {
+  User
+    .create(userSeeder)
     .then((data) => {
       res.send(data);
     })
