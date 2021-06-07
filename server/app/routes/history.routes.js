@@ -6,5 +6,5 @@ module.exports = app => {
   // Retrieve all histories
   router.get("/", histories.findAll);
 
-  app.use("/api/histories", router);
+  app.use("/api/history", router);
 };
