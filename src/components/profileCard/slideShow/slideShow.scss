@@ -1,6 +1,39 @@
 @import 'styles/_color';
 @import 'styles/_font';
 
+@keyframes like {
+  from {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+
+  to {
+    transform: rotate(40deg) translateY(-80px);
+    opacity: 0;
+  }
+}
+
+@keyframes pass {
+  from {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+
+  to {
+    transform: rotate(-40deg) translateY(-80px);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 .slide-show {
   padding: 1rem;
   width: 25rem;
@@ -21,8 +54,34 @@
 
   .name,
   .age,
-  .title,
+  .email,
+  .phone,
+  .gender,
   .total-images {
     color: $white;
+  }
+
+  .gender {
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.3rem;
+    text-transform: capitalize;
+    background-color: $gender;
+    width: max-content;
+  }
+
+  &.fade-in {
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+  }
+
+  &.like {
+    animation: like 0.7s ease-out;
+  }
+
+  &.pass {
+    animation: pass 0.7s ease-out;
   }
 }

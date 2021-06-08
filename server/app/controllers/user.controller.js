@@ -4,8 +4,8 @@ const User = db.users;
 const History = db.histories;
 
 const getPagination = (page, size) => {
-  const limit = size ? +size : 5;
-  const offset = page ? page * limit : 0;
+  const limit = size ? size : 5;
+  const offset = page ? (page - 1) * limit : 0;
 
   return { limit, offset };
 };
@@ -28,7 +28,7 @@ exports.import = (req, res) => {
 // Retrieve all Users from the database.
 exports.findAll = async (req, res) => {
   const { page, size, userId } = req.query;
-  const histories = await History.find({ userId }).select({ "userInteractedId": 1, "_id": 0});
+  const histories = await History.find({ userId }).select({ "interactedUserId": 1, "_id": 0});
   var condition = userId
     ? { _id : { $nin : histories } }
     : {};
@@ -66,7 +66,7 @@ exports.findOne = (req, res) => {
     .then((data) => {
       if (!data)
         res.status(404).send({ message: "User Not found with id " + userId });
-      else res.send(data);
+      else res.send({data});
     })
     .catch((err) => {
       res

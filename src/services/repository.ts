@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'https://dummyapi.io/data/api/';
+const baseURL = 'http://localhost:4000/api/';
 const headers = {
   'app-id': '60349db146ff8b0837d18351'
 };

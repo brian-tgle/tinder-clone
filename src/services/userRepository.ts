@@ -1,3 +1,4 @@
+import { UserReaction } from 'interface/user';
 import Repository from './repository';
 
 const url = 'user';
@@ -9,14 +10,21 @@ const UserRepository = {
    * @param {number} page the current page
    * @return {Array} the list of user
    */
-  getAll: (limit: number, page: number) => Repository.get(`${url}?limmit=${limit}&page=${page}`),
+  getAll: (limit: number, page: number): any => Repository.get(`${url}?limmit=${limit}&page=${page}`),
 
   /**
    * /GET. Get user profile
    * @param {number} userId the user id
    * @return {Object} the user profile
    */
-  getUserProfile: (userId: number) => Repository.get(`${url}/${userId}`)
+  getUserProfile: (userId: string) => Repository.get(`${url}/${userId}`),
+
+  /**
+   * Mark a user as liked or not liked
+   * @param {UserReaction} payload Reaction data payload
+   * @return {UserReaction} Response
+   */
+  reaction: (payload: UserReaction) => Repository.post(`${url}/${payload.reaction}`, payload)
 };
 
 export default UserRepository;

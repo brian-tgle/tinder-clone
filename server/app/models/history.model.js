@@ -2,8 +2,8 @@ module.exports = (mongoose, mongoosePaginate) => {
   var schema = mongoose.Schema(
     {
       userId: String,
-      userInteractedId: String,
-      liked: Boolean
+      interactedUserId: String,
+      reaction: String
     },
     { timestamps: true }
   );
