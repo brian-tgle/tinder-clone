@@ -10,7 +10,7 @@ const Card: FC<CardProps> = ({ userList }) => {
     <>
       {userList.length ? userList.map((user: UserItem, index: number) => (
         <ProfileCard key={user.id} userId={user.id} index={index} />
-      )) : <p>You have got all user!</p>}
+      )) : <p>You have viewed all user!</p>}
     </>
   );
 };

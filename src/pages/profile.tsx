@@ -8,7 +8,7 @@ import { AnyObject, Pagination } from 'constant/types';
 
 const Profile: FC = () => {
   const { LIMIT, PAGE } = DEFAULT_API_PARAMS;
-  const [paging, setPaging] = useState<Pagination>({ totalPages: 1, currentPage: 1 });
+  const [paging, setPaging] = useState<Pagination>({ totalPages: 0, currentPage: 0 });
   const [histories, setHistory] = useState<UserHistory[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 

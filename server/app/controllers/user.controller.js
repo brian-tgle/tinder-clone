@@ -3,9 +3,9 @@ const userSeeder = require('../data/seeder.json');
 const User = db.users;
 const History = db.histories;
 
-const getPagination = (page, size) => {
+const getPagination = (page, size, skip) => {
   const limit = size ? size : 5;
-  const offset = page ? (page - 1) * limit : 0;
+  const offset = page ? ((page - 1) * limit) + skip : 0;
 
   return { limit, offset };
 };
@@ -27,7 +27,7 @@ exports.import = (req, res) => {
 
 // Retrieve all Users from the database.
 exports.findAll = async (req, res) => {
-  const { page, size, userId } = req.query;
+  const { page, size, userId, skip } = req.query;
   // Get all user that already interacted before.
   // Then select list of user without them.
   const histories = await History.find({ userId }).select({ "interactedUser": 1, "_id": 0});
@@ -43,7 +43,7 @@ exports.findAll = async (req, res) => {
     picture: 1,
     title: 1
   }
-  const { limit, offset } = getPagination(page, size);
+  const { limit, offset } = getPagination(page, size, parseInt(skip));
   User.paginate(condition, { offset, limit, select })
     .then((data) => {
       res.send({

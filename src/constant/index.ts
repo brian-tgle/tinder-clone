@@ -1,7 +1,7 @@
 export const DEFAULT_API_PARAMS = {
   LIMIT: 5,
   PAGE: 1,
-  NEED_TO_FETCH_MORE: 2,
+  NEED_TO_FETCH_MORE: 3,
   DEFAULT_INDEX: 0
 };
 
