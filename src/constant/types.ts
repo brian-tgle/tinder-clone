@@ -5,3 +5,8 @@ export interface AnyObject {
 export interface ActionProps {
   handleClick: Function;
 }
+
+export interface Pagination {
+  currentPage: number;
+  totalPages: number;
+}

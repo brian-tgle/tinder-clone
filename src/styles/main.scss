@@ -1,11 +1,13 @@
 @import '_font';
 @import '_common';
+@import '_color';
 
 body {
   font-family: 'Lato-Regular', sans-serif;
 }
 
-.tinder-show {
+.tinder-show,
+.pagination {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,12 +17,34 @@ body {
   position: fixed;
   top: 1rem;
   right: 1rem;
+
   .username {
     position: relative;
     bottom: 1rem;
-    right: .5rem
+    right: 0.5rem;
   }
+
   .avatar {
     border-radius: 50%;
+  }
+}
+
+.profile-page {
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  .history-card {
+    margin-top: 1rem;
+  }
+}
+
+.pagination {
+  list-style: none;
+
+  li {
+    display: inline-block;
+    margin: 0.2rem;
   }
 }

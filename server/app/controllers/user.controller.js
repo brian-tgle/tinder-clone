@@ -28,9 +28,12 @@ exports.import = (req, res) => {
 // Retrieve all Users from the database.
 exports.findAll = async (req, res) => {
   const { page, size, userId } = req.query;
-  const histories = await History.find({ userId }).select({ "interactedUserId": 1, "_id": 0});
+  // Get all user that already interacted before.
+  // Then select list of user without them.
+  const histories = await History.find({ userId }).select({ "interactedUser": 1, "_id": 0});
+  const historyIds = histories.map(history => history.interactedUser);
   var condition = userId
-    ? { _id : { $nin : histories } }
+    ? { _id : { $nin : historyIds } }
     : {};
   const select = {
     email: 1,

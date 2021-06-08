@@ -8,23 +8,33 @@ import { ReactComponent as BackButton } from 'assets/images/back.svg';
 import './slideShow.scss';
 
 interface SlideShowProps {
-  userId: string;
+  userId?: string;
+  user?: UserProfile;
   reaction: string;
+  noneAnimation?: boolean;
+  customClass?: string;
 }
 
-const SlideShow: FC<SlideShowProps> = ({ userId, reaction }) => {
+const SlideShow: FC<SlideShowProps> = ({ userId, user, reaction, noneAnimation, customClass }) => {
   const [userProfile, setUserProfile] = useState<UserProfile>();
   useEffect(() => {
-    UserRepository.getUserProfile(userId).then((profile) => {
-      setUserProfile(profile.data);
-    }).catch(() => {});
-  }, [userId]);
+    if (userId) {
+      UserRepository.getUserProfile(userId).then((profile) => {
+        setUserProfile(profile.data);
+      }).catch(() => {});
+    } else if (user) {
+      setUserProfile(user);
+    }
+  }, [userId, user]);
 
   return (
     <>
       {userProfile ?
         <div
-          className={`slide-show with-border-radius with-shadow fade-in ${reaction}`}
+          className={
+            `slide-show with-border-radius with-shadow fade-in
+            ${customClass} ${noneAnimation ? '' : reaction}`
+          }
           style={{
             backgroundImage: `linear-gradient(
             rgba(0,0,0, 0),
