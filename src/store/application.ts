@@ -10,16 +10,12 @@ export const actions = {
   onLoadTotalPage: (totalPage: number) => ({ setState }: StoreApi) => {
     setState({ totalPage });
   },
-  onChangePage: (currentPage: number) => ({ setState }: StoreApi) => {
-    setState({ currentPage });
-  },
   onChangeItemIndex: (currentItemIndex: number) => ({ setState }: StoreApi) => {
     setState({ currentItemIndex });
   }
 };
 export const initialState: ApplicationStates = {
   totalPage: 0,
-  currentPage: 1,
   currentItemIndex: 0
 };
 

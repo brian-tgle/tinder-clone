@@ -1,4 +1,4 @@
-import { FC, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { FC, useEffect, useLayoutEffect, useState } from 'react';
 import { UserItem, UserListResponse } from 'interface/user';
 import UserRepository from 'services/userRepository';
 import useApplicationStore from 'store/application';
@@ -12,11 +12,10 @@ const Home: FC = () => {
   const [users, setUsers] = useState<UserItem[]>([]);
   const [tempUsers, setTempUsers] = useState<UserItem[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const timerRef = useRef<number | null>(null);
   const [appState, applicationActions] = useApplicationStore();
 
-  const fetchUser = (page: number, callback: Function): void => {
-    UserRepository.getAll(LIMIT, page).then((data: UserListResponse) => {
+  const fetchUser = (callback: Function, skip = 0): void => {
+    UserRepository.getAll(LIMIT, PAGE, skip).then((data: UserListResponse) => {
       applicationActions.onLoadTotalPage(data?.totalPages);
       callback(data?.data);
     }).catch((error: AnyObject) => {}).finally(() => {
@@ -26,32 +25,35 @@ const Home: FC = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetchUser(appState.currentPage || PAGE, setUsers);
+    fetchUser(setUsers);
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
+    // Prepare more data when interacted within 3 users.
     if (appState.currentItemIndex === NEED_TO_FETCH_MORE) {
-      // Preload data.
-      const newPage = appState.currentPage + 1;
-      applicationActions.onChangePage(newPage);
-      fetchUser(newPage, setTempUsers);
+      fetchUser(setTempUsers, 2);
     }
-    // Remove interacted item from list
+    // Remove interacted item from list after 0.4s of animation (fade out)
     if (users.length && appState.currentItemIndex > DEFAULT_INDEX) {
-      timerRef.current = window.setTimeout(() => {
+      const timer = setTimeout(() => {
         setUsers((prevUsers) => prevUsers.filter((_, i) => i !== DEFAULT_INDEX));
       }, 400);
+      return () => {
+        clearTimeout(timer);
+      };
     }
-    if (appState.currentItemIndex === users.length && appState.currentPage <= appState.totalPage) {
-      // Set item index to zero
-      applicationActions.onChangeItemIndex(DEFAULT_INDEX);
-      // Replace new data here
-      setUsers(tempUsers);
-    }
-    return () => {
-      window.clearTimeout(timerRef.current || 0);
-    };
   }, [appState.currentItemIndex]);
+
+  useLayoutEffect(() => {
+    if (users.length === 0 && tempUsers.length) {
+      // Set item index to zero.
+      applicationActions.onChangeItemIndex(DEFAULT_INDEX);
+      // Replace by new data.
+      setUsers(tempUsers);
+      // Remove temp data.
+      setTempUsers([]);
+    }
+  }, [users]);
 
   return (
     <div className="tinder-show">
