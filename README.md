@@ -2,6 +2,13 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 ![Screenshot](https://user-images.githubusercontent.com/84697800/120880548-9c027c00-c5f5-11eb-9dc7-a303579c501f.png)
+![Screenshot](https://user-images.githubusercontent.com/84697800/121123239-1547dc00-c84d-11eb-84fa-0a44ad4a0fcd.png)
+
+## Demo
+
+<figure class="video_container">
+  <iframe src="https://youtu.be/P_ljfKB3U8Q" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
 
 ## Feature
 - Like
@@ -9,10 +16,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - View history
 
 ## Built with:
-
+- **NodeJS**: For server side. (Node 10+)
+- **ReactJS**: For client side. (React 17.x)
 - 💡 **TypeScript**: A language for application-scale JavaScript
 - 💎 **Hooks**: Use react hooks API instead of traditional class API
-- 🚀 **State of The Art Development**: Newest development stack of React/Hooks/React Sweet State/Typescript
+- 🚀 **State of The Art Development**: Newest development stack of NodeJS/React/Hooks/React Sweet State/Typescript
 - **react-sweet-state** for state management
 - **husky/lint-staged** for checking before commiting and pushing (check it out in ```husky``` and ```lint-staged``` section in ```package.json```)
 - **stylelint** for checking style convention
