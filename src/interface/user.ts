@@ -26,3 +26,17 @@ export interface UserReaction {
   interactedUserId: string;
   reaction: string;
 }
+
+export interface UserHistory {
+  id: string;
+  interactedUser: UserProfile;
+  reaction: string;
+  createdAt: string;
+}
+
+export interface HistoryListResponse {
+  currentPage: number;
+  data: UserHistory[];
+  totalPages: number;
+  totalItems: number;
+}

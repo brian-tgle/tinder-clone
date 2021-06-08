@@ -3,7 +3,7 @@ const History = db.histories;
 
 const getPagination = (page, size) => {
   const limit = size ? +size : 5;
-  const offset = page ? page * limit : 0;
+  const offset = page ? (page - 1) * limit : 0;
 
   return { limit, offset };
 };
@@ -19,7 +19,7 @@ exports.create = (req, res) => {
   // Create a History
   const history = new History({
     userId: req.body.userId,
-    interactedUserId: req.body.interactedUserId,
+    interactedUser: req.body.interactedUserId,
     reaction: req.body.reaction
   });
 
@@ -39,11 +39,11 @@ exports.create = (req, res) => {
 
 // Retrieve all Histories from the database.
 exports.findAll = async (req, res) => {
-  const { page, size } = req.query;
+  const { page, size, userId } = req.query;
 
   const { limit, offset } = getPagination(page, size);
 
-  History.paginate({}, { offset, limit })
+  History.paginate({userId}, { offset, limit, populate: 'interactedUser' })
     .then((data) => {
       res.send({
         totalItems: data.totalDocs,

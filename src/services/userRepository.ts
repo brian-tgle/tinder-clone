@@ -1,3 +1,4 @@
+import { TEMP_USER_ID } from 'constant';
 import { UserReaction } from 'interface/user';
 import Repository from './repository';
 
@@ -10,7 +11,8 @@ const UserRepository = {
    * @param {number} page the current page
    * @return {Array} the list of user
    */
-  getAll: (limit: number, page: number): any => Repository.get(`${url}?limmit=${limit}&page=${page}`),
+  getAll: (limit: number, page: number): any =>
+    Repository.get(`${url}?limmit=${limit}&page=${page}&userId=${TEMP_USER_ID}`),
 
   /**
    * /GET. Get user profile
