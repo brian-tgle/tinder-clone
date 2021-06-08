@@ -16,7 +16,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - View history
 
 ## Built with:
-- **NodeJS**: For server side. (Node 10+)
+- **NodeJS/MongoDB**: For server side. (Node 10+)
 - **ReactJS**: For client side. (React 17.x)
 - 💡 **TypeScript**: A language for application-scale JavaScript
 - 💎 **Hooks**: Use react hooks API instead of traditional class API
